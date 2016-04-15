@@ -1,14 +1,14 @@
 {
     "collab_server" : "",
-    "contents" : "\n# This is the user-interface definition of a Shiny web application.\n# You can find out more about building applications with Shiny here:\n#\n# http://shiny.rstudio.com\n#\n\nlibrary(shiny)\nlibrary(visNetwork)\n\nfactors <- read.csv(\"factors.csv\", header=FALSE)\n\nnewsize = 216\nnumnodes = 64\nfactors2 = factors[(1:newsize),(1:2)]\n\nprimes  <- read.csv(\"numfactors.csv\", header=FALSE)\n\nnedges = matrix(c(2:2*numnodes-1),nrow=numnodes-1, ncol = 2)\n\nfor (i in 2:numnodes){\n  if (primes[i,2]==2){\n    nedges[i-1,2]=\"groupprime\"\n  }\n  else if (i%%2 == 0){\n    nedges[i-1,2]=\"groupeven\"\n  }\n  else{\n    nedges[i-1,2]=\"groupodd\"\n  }\n}\n\n\n#TO CREATE NODES\nnodes<-data.frame(id = 2:numnodes, label = paste(2:numnodes),group = nedges[,2],font.size = c(20))\n\n#TO CREATE EDGES\nedges<-data.frame(from = factors2$V2, to = factors2$V1, arrows = list(to = factors2$V1, enabled=TRUE), font.size = c(20), font.color =c (\"black\"))\n\n\n\n\nshinyUI(\n  fluidPage(\n    titlePanel(\"Factors\"), #Web page title\n   # sidebarLayout(position = \"right\",\n                #  sidebarPanel(\"more\"),\n                  mainPanel(\n                    visNetworkOutput(\"graph\",width=\"100%\", height=\"600px\")\n                    \n                  )\n    #)\n  )\n)\n  ",
+    "contents" : "\n# This is the user-interface definition of a Shiny web application.\n# You can find out more about building applications with Shiny here:\n#\n# http://shiny.rstudio.com\n#\n\nlibrary(shiny)\nlibrary(visNetwork)\n\nshinyUI(\n  fluidPage(\n    titlePanel(\"Factors\"), #Web page title\n   # sidebarLayout(position = \"right\",\n                #  sidebarPanel(\"more\"),\n                  mainPanel(\n                    visNetworkOutput(\"graph\",width=\"100%\", height=\"600px\")\n                    \n                  )\n    #)\n  )\n)\n  ",
     "created" : 1460742941403.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1347742455",
+    "hash" : "3339225321",
     "id" : "AAFA5582",
-    "lastKnownWriteTime" : 1460747985,
-    "last_content_update" : 1460747985101,
+    "lastKnownWriteTime" : 1460749438,
+    "last_content_update" : 1460749438369,
     "path" : "~/Desktop/shinywebapp/ui.R",
     "project_path" : "ui.R",
     "properties" : {

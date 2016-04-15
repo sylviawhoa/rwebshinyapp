@@ -11,7 +11,7 @@ library(visNetwork)
 
 factors <- read.csv("factors.csv", header=FALSE)
 
-newsize = 216
+newsize = 153
 numnodes = 64
 factors2 = factors[(1:newsize),(1:2)]
 
