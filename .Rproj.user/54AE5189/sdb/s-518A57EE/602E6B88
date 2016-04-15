@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\n# This is the server logic for a Shiny web application.\n# You can find out more about building applications with Shiny here:\n#\n# http://shiny.rstudio.com\n#\n\n\nlibrary(shiny)\nlibrary(visNetwork)\n\nfactors <- read.csv(\"factors.csv\", header=FALSE)\n\nnewsize = 216\nnumnodes = 64\nfactors2 = factors[(1:newsize),(1:2)]\n\nprimes  <- read.csv(\"numfactors.csv\", header=FALSE)\n\nnedges = matrix(c(2:2*numnodes-1),nrow=numnodes-1, ncol = 2)\n\nfor (i in 2:numnodes){\n  if (primes[i,2]==2){\n    nedges[i-1,2]=\"groupprime\"\n  }\n  else if (i%%2 == 0){\n    nedges[i-1,2]=\"groupeven\"\n  }\n  else{\n    nedges[i-1,2]=\"groupodd\"\n  }\n}\n\n\n#TO CREATE NODES\nnodes<-data.frame(id = 2:numnodes, label = paste(2:numnodes),group = nedges[,2],font.size = c(20))\n\n#TO CREATE EDGES\nedges<-data.frame(from = factors2$V2, to = factors2$V1, arrows = list(to = factors2$V1, enabled=TRUE), font.size = c(20), font.color =c (\"black\"))\n\n\n\nshinyServer(function(input, output) {\n      output$graph<-renderVisNetwork(visNetwork(nodes,edges) %>%\n                                       visNodes(title = nodes$title, x = nodes$x, y= nodes$y, size = 30, shadow = TRUE, font = (size = 16))  %>%\n                                       visEdges(color = \"black\")%>%\n                                       visGroups(groupname = \"groupodd\", color  = \"blue\")%>% \n                                       visGroups(groupname = \"groupeven\", color = \"red\")%>% \n                                       visGroups(groupname = \"groupprime\", color = \"yellow\")%>% \n                                       visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %>%\n                                       visInteraction(hover = TRUE, zoomView = TRUE) %>%\n                                       visPhysics(solver = \"forceAtlas2Based\", forceAtlas2Based = list(gravitationConstant = -20))\n      )\n    }\n)\n",
+    "created" : 1460742941633.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "773514677",
+    "id" : "602E6B88",
+    "lastKnownWriteTime" : 1460747976,
+    "last_content_update" : 1460747976602,
+    "path" : "~/Desktop/shinywebapp/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
