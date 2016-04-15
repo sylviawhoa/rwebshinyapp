@@ -10,7 +10,7 @@ library(visNetwork)
 
 shinyUI(
   fluidPage(
-    titlePanel("Factors"), #Web page title
+    titlePanel("Visualizing the Integers as a Directed Graph of Factors"), #Web page title
    # sidebarLayout(position = "right",
                 #  sidebarPanel("more"),
                   mainPanel(

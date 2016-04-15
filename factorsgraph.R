@@ -16,13 +16,13 @@ nedges = matrix(c(2:2*numnodes-1),nrow=numnodes-1, ncol = 2)
 
 for (i in 2:numnodes){
   if (primes[i,2]==2){
-    nedges[i-1,2]="groupprime"
+    nedges[i-1,2]="Prime Numbers"
   }
   else if (i%%2 == 0){
-    nedges[i-1,2]="groupeven"
+    nedges[i-1,2]="Even Numbers"
   }
   else{
-    nedges[i-1,2]="groupodd"
+    nedges[i-1,2]="Odd Numbers"
   }
 }
 
@@ -37,7 +37,7 @@ edges<-data.frame(from = factors2$V2, to = factors2$V1, arrows = list(to = facto
 
 shinyApp(
   ui = fluidPage(
-    titlePanel("Factors"), #Web page title
+    titlePanel("Visualizing the Integers as a Directed Graph of Factors"), #Web page title
                   mainPanel(
                     visNetworkOutput("graph",width="100%", height="600px")
                     
@@ -47,12 +47,12 @@ shinyApp(
   ,
   server = shinyServer(
     function(input, output) {
-      output$graph<-renderVisNetwork(visNetwork(nodes,edges) %>%
-                                       visNodes(title = nodes$title, x = nodes$x, y= nodes$y, size = 30, shadow = TRUE, font = (size = 16))  %>%
+      output$graph<-renderVisNetwork(visNetwork(nodes,edges, legend = TRUE) %>%
+                                       visNodes(title = nodes$title, x = nodes$x, y= nodes$y, size = 30, shadow = TRUE, font = (size = 26))  %>%
                                       visEdges(color = "black")%>%
-                                       visGroups(groupname = "groupodd", color  = "blue")%>% 
-                                       visGroups(groupname = "groupeven", color = "red")%>% 
-                                       visGroups(groupname = "groupprime", color = "yellow")%>% 
+                                       visGroups(groupname = "Odd Numbers", color  = "lightblue")%>% 
+                                       visGroups(groupname = "Even Numbers", color = "red")%>% 
+                                       visGroups(groupname = "Prime Numbers", color = "yellow")%>% 
                                        visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE) %>%
                                         visInteraction(hover = TRUE, zoomView = TRUE) %>%
                                        visPhysics(solver = "forceAtlas2Based", forceAtlas2Based = list(gravitationConstant = -20))

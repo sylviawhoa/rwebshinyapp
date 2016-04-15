@@ -2,6 +2,6 @@ name: shinywebapp
 account: sylviawhoa
 server: shinyapps.io
 appId: 94751
-bundleId: 421098
+bundleId: 421133
 url: https://sylviawhoa.shinyapps.io/shinywebapp/
-when: 1460749124.30516
+when: 1460750808.32844

@@ -1,14 +1,14 @@
 {
     "collab_server" : "",
-    "contents" : "\n# This is the user-interface definition of a Shiny web application.\n# You can find out more about building applications with Shiny here:\n#\n# http://shiny.rstudio.com\n#\n\nlibrary(shiny)\nlibrary(visNetwork)\n\nshinyUI(\n  fluidPage(\n    titlePanel(\"Factors\"), #Web page title\n   # sidebarLayout(position = \"right\",\n                #  sidebarPanel(\"more\"),\n                  mainPanel(\n                    visNetworkOutput(\"graph\",width=\"100%\", height=\"600px\")\n                    \n                  )\n    #)\n  )\n)\n  ",
+    "contents" : "\n# This is the user-interface definition of a Shiny web application.\n# You can find out more about building applications with Shiny here:\n#\n# http://shiny.rstudio.com\n#\n\nlibrary(shiny)\nlibrary(visNetwork)\n\nshinyUI(\n  fluidPage(\n    titlePanel(\"Visualizing the Integers as a Directed Graph of Factors\"), #Web page title\n   # sidebarLayout(position = \"right\",\n                #  sidebarPanel(\"more\"),\n                  mainPanel(\n                    visNetworkOutput(\"graph\",width=\"100%\", height=\"600px\")\n                    \n                  )\n    #)\n  )\n)\n  ",
     "created" : 1460742941403.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3339225321",
+    "hash" : "2917732738",
     "id" : "AAFA5582",
-    "lastKnownWriteTime" : 1460749438,
-    "last_content_update" : 1460749438369,
+    "lastKnownWriteTime" : 1460750792,
+    "last_content_update" : 1460750792704,
     "path" : "~/Desktop/shinywebapp/ui.R",
     "project_path" : "ui.R",
     "properties" : {
